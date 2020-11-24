@@ -74,13 +74,16 @@ public void SelectionSort()
 public void InsertionSort()
 {
     green.clear();
+    // If the element is greater than the previous elements, continue
     if(array.get(counter) <= array.get(counter-1))
     {
         int temp = array.get(counter);
+        // Find where the element belongs
         for(int i = 0; i < counter; ++i)
         {
             if(array.get(i) > array.get(counter))
             {
+                // Insert element
                 array.add(i, temp);
                 green.add(i);
                 break;
@@ -96,8 +99,9 @@ public void MergeSort()
     green.clear();
 int n = array.size();
 
+    // Left, middle, end of subarray
     int l = counter2;
-    int m = min(counter + l - 1, n-1);
+    int m = min(counter + l - 1, n-1);  // min if n is not a power of 2
     int r = min(l + 2 * counter - 1, n-1);
     
     int a = m - l + 1;
@@ -105,6 +109,7 @@ int n = array.size();
     int[] L = new int[a];
     int[] R = new int[b];
     
+    // Copy subarray
     for(int i = 0; i < a; ++i)
     {
         L[i] = array.get(l + i);
@@ -114,6 +119,7 @@ int n = array.size();
         R[i] = array.get(m + 1 + i);
     }
     
+    // Merge subarrays
     int i = 0;
     int j = 0;
     int k = l;
